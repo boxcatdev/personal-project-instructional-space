@@ -29,11 +29,9 @@ public class QuestGiver : MonoBehaviour
     {
         if (_currentQuest.steps[stepIndex].goalType == GoalType.GatherItem)
         {
-            if (_currentQuest.steps[stepIndex].hasItem)
-            {
                 if ((_currentQuest.steps.Count - (stepIndex + 1) <= 0))//if there are no more steps left, finish quest!
                 {
-                    quest[questIndex].steps[stepIndex].hasItem = false;
+                    //quest[questIndex].steps[stepIndex].hasItem = false;
                     questIndex += 1;
                     _currentQuest = quest[questIndex];
                     quest[questIndex].steps[stepIndex].hasItem = false;
@@ -43,7 +41,6 @@ public class QuestGiver : MonoBehaviour
                     stepIndex++;
                 }
                 
-            }
         }
         if (_currentQuest.steps[stepIndex].goalType == GoalType.PlaceItem)
         {

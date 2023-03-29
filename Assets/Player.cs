@@ -5,20 +5,17 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] public QuestGiver _questGiver;
-    public bool _grabbedFlour;
-    public bool _grabbedBakingPowder;
-    public bool _grabbedSalt;
-    public bool _grabbedButter;
-    public bool _grabbedEgg;
 
     public void GrabbedObject(GameObject _obj)
     {
-        for (int i = 0; i <= _questGiver._currentQuest.objectNames.Count; i++)
+        for (int i = 0; i <= _questGiver._currentQuest.objectNames.Count - 1; i++)
         {
             if (_questGiver._currentQuest.objectNames[i] == _obj.name)
             {
+                _questGiver.CompleteQuest();
+                Debug.Log("Complete Quest");
                 //_questGiver._currentQuest.steps[_questGiver.stepIndex].currentAmount++;
-                _questGiver._currentQuest.steps[_questGiver.stepIndex].hasItem = true;
+                //_questGiver._currentQuest.steps[_questGiver.stepIndex].hasItem = true;
             }
         }
     }
