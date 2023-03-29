@@ -22,20 +22,32 @@ public class QuestGiver : MonoBehaviour
         questWindow.SetActive(true);
         titleText.text = _currentQuest.questTitle;
         descText.text = _currentQuest.description;
-        currentStep.text = _currentQuest.step[stepIndex];
+        currentStep.text = _currentQuest.steps[stepIndex].goalName;
     }
 
     public void CompleteQuest()
     {
-        if (quest[questIndex].goal.goalType == GoalType.GatherItem)
+        if (_currentQuest.steps[stepIndex].goalType == GoalType.GatherItem)
         {
-            if (quest[questIndex].goal.hasItem)
+            if (_currentQuest.steps[stepIndex].hasItem)
             {
-                quest[questIndex].goal.hasItem = false;
-                questIndex += 1;
-                _currentQuest = quest[questIndex];
-                quest[questIndex].goal.hasItem = false;
+                if ((_currentQuest.steps.Count - (stepIndex + 1) <= 0))//if there are no more steps left, finish quest!
+                {
+                    quest[questIndex].steps[stepIndex].hasItem = false;
+                    questIndex += 1;
+                    _currentQuest = quest[questIndex];
+                    quest[questIndex].steps[stepIndex].hasItem = false;
+                }
+                else
+                {
+                    stepIndex++;
+                }
+                
             }
+        }
+        if (_currentQuest.steps[stepIndex].goalType == GoalType.PlaceItem)
+        {
+            //item place check (by volume check?)
         }
 
     }

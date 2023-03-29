@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class QuestGoal
 {
+    public string goalName;
     public GoalType goalType;
     public int requiredAmount;
     public int currentAmount;
