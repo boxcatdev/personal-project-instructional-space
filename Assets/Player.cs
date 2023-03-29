@@ -17,8 +17,8 @@ public class Player : MonoBehaviour
         {
             if (_questGiver._currentQuest.objectNames[i] == _obj.name)
             {
-                _questGiver._currentQuest.goal.currentAmount++;
-                _questGiver._currentQuest.goal.hasItem = true;
+                //_questGiver._currentQuest.steps[_questGiver.stepIndex].currentAmount++;
+                _questGiver._currentQuest.steps[_questGiver.stepIndex].hasItem = true;
             }
         }
     }

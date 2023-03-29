@@ -7,14 +7,14 @@ public class QuestGoal
 {
     public string goalName;
     public GoalType goalType;
-    public int requiredAmount;
-    public int currentAmount;
+    //public int requiredAmount = 1;
+    //public int currentAmount;
     public bool hasItem;
 
-    public bool IsReached()
-    {
-        return (currentAmount >= requiredAmount);
-    }
+   //public bool IsReached()
+   //{
+   //    return (currentAmount >= requiredAmount);
+   //}
 }
 
 public enum GoalType

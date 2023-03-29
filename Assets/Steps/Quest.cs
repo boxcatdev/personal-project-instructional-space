@@ -10,9 +10,9 @@ public class Quest : ScriptableObject
     [TextArea(10, 20)]
     public string description;
 
-    public List<QuestGoal> steps;
-
     public List<string> objectNames;
+
+    public List<QuestGoal> steps;
 
     //public QuestGoal goal;
 }
