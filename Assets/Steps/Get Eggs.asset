@@ -17,5 +17,5 @@ MonoBehaviour:
   objectNames: []
   steps:
   - goalName: 
-    goalType: 1
+    goalType: 0
     hasItem: 0
