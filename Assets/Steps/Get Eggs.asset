@@ -12,14 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9067281d54f565846ac670da7b465128, type: 3}
   m_Name: Get Eggs
   m_EditorClassIdentifier: 
-  questTitle: Get Eggs
+  questTitle: Get Dry Ingredients
   description: Find the right eggs in the refrigerator.
-  step:
-  - Open fridge.
-  - Grab a large egg.
   objectNames: []
-  goal:
-    goalType: 0
-    requiredAmount: 0
-    currentAmount: 0
+  steps:
+  - goalName: 
+    goalType: 1
     hasItem: 0
