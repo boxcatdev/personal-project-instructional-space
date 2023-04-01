@@ -14,12 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questTitle: Get Eggs
   description: Find the right eggs in the refrigerator.
-  step:
-  - Open fridge.
-  - Grab a large egg.
   objectNames: []
-  goal:
+  steps:
+  - goalName: 
     goalType: 0
-    requiredAmount: 0
-    currentAmount: 0
     hasItem: 0
