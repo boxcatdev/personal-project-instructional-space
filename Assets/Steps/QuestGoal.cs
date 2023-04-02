@@ -7,9 +7,10 @@ public class QuestGoal
 {
     public string goalName;
     public GoalType goalType;
+    //public IngredientType ingredient;
     //public int requiredAmount = 1;
     //public int currentAmount;
-    public bool hasItem;
+    public bool goalComplete;
 
    //public bool IsReached()
    //{

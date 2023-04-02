@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class QuestGiver : MonoBehaviour
 {
-    public List<Quest> quest;
-    public Quest _currentQuest;
+    public List<Quest> quests;
+    public Quest currentQuest;
     public Player player;
 
     public GameObject questWindow;
@@ -17,42 +18,45 @@ public class QuestGiver : MonoBehaviour
     public int questIndex = 0;
     public int stepIndex;
 
+    private void Awake()
+    {
+        foreach (var quest in quests)
+        {
+            quest.InitializeQuest();
+        }
+        currentQuest = quests[questIndex];
+        //_currentQuest = quest.Peek();
+        //OpenQuestWindow();
+    }
+
+    public void CompleteStep()
+    {
+        currentQuest.CompleteStep();
+    }
+
+    internal void CompleteQuest()
+    {
+        questIndex++;
+        if (questIndex >= quests.Count)
+            AllQuestsComplete();
+        else
+            currentQuest = quests[questIndex];
+        Debug.Log("New Quest: " + currentQuest.questTitle);
+    }
+
+    private void AllQuestsComplete()
+    {
+        Debug.LogWarning("Quests Complete!");
+        Debug.Log("Open door to ritual room");
+    }
+
     public void OpenQuestWindow()
     {
         questWindow.SetActive(true);
-        titleText.text = _currentQuest.questTitle;
-        descText.text = _currentQuest.description;
-        currentStep.text = _currentQuest.steps[stepIndex].goalName;
-    }
-
-    public void CompleteQuest()
-    {
-        if (_currentQuest.steps[stepIndex].goalType == GoalType.GatherItem)
-        {
-                if ((_currentQuest.steps.Count - (stepIndex + 1) <= 0))//if there are no more steps left, finish quest!
-                {
-                    //quest[questIndex].steps[stepIndex].hasItem = false;
-                    questIndex += 1;
-                    _currentQuest = quest[questIndex];
-                    quest[questIndex].steps[stepIndex].hasItem = false;
-                }
-                else
-                {
-                    stepIndex++;
-                }
-                
-        }
-        if (_currentQuest.steps[stepIndex].goalType == GoalType.PlaceItem)
-        {
-            //item place check (by volume check?)
-        }
-
-    }
-
-    private void Start()
-    {
-        _currentQuest = quest[questIndex];
-        OpenQuestWindow();
+        titleText.text = currentQuest.questTitle;
+        descText.text = currentQuest.description;
+        currentStep.text = currentQuest.currentGoal.goalName;
+        //currentStep.text = _currentQuest.steps[stepIndex].goalName;
     }
 
 }

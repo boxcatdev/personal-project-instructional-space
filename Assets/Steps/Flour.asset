@@ -10,13 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9067281d54f565846ac670da7b465128, type: 3}
-  m_Name: Get Flour
+  m_Name: Flour
   m_EditorClassIdentifier: 
   questTitle: Flour Power!
   description: Find the flour in the pantry.
-  objectNames:
-  - Flour
-  steps:
-  - goalName: 'Grab Flour '
+  ingredientType: 0
+  currentGoal:
+    goalName: Place Flour
+    goalType: 1
+    goalComplete: 1
+  stepsList:
+  - goalName: Gather Flour
     goalType: 0
-    hasItem: 0
+    goalComplete: 1
+  - goalName: Place Flour
+    goalType: 1
+    goalComplete: 1

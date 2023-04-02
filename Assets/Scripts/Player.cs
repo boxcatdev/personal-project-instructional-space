@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 
     public void GrabbedObject(GameObject _obj)
     {
-        for (int i = 0; i <= _questGiver._currentQuest.objectNames.Count - 1; i++)
+        /*for (int i = 0; i <= _questGiver._currentQuest.objectNames.Count - 1; i++)
         {
             if (_questGiver._currentQuest.objectNames[i] == _obj.name)
             {
@@ -17,6 +17,6 @@ public class Player : MonoBehaviour
                 //_questGiver._currentQuest.steps[_questGiver.stepIndex].currentAmount++;
                 //_questGiver._currentQuest.steps[_questGiver.stepIndex].hasItem = true;
             }
-        }
+        }*/
     }
 }
