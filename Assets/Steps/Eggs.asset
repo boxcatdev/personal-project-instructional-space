@@ -10,13 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9067281d54f565846ac670da7b465128, type: 3}
-  m_Name: Get Flour
+  m_Name: Eggs
   m_EditorClassIdentifier: 
-  questTitle: Flour Power!
-  description: Find the flour in the pantry.
-  objectNames:
-  - Flour
-  steps:
-  - goalName: 'Grab Flour '
+  questTitle: Grab Eggs
+  description: Find the right eggs in the refrigerator.
+  ingredientType: 5
+  currentGoal:
+    goalName: 
     goalType: 0
-    hasItem: 0
+    goalComplete: 0
+  stepsList:
+  - goalName: 
+    goalType: 0
+    goalComplete: 0
+  - goalName: Gather Eggs
+    goalType: 0
+    goalComplete: 0
+  - goalName: Place Eggs
+    goalType: 1
+    goalComplete: 0

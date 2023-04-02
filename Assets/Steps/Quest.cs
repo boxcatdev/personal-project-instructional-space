@@ -10,9 +10,40 @@ public class Quest : ScriptableObject
     [TextArea(10, 20)]
     public string description;
 
-    public List<string> objectNames;
+    //public List<string> objectNames;
+    [Space]
+    public IngredientType ingredientType;
+    public QuestGoal currentGoal;
 
-    public List<QuestGoal> steps;
+    public List<QuestGoal> stepsList;
 
-    //public QuestGoal goal;
+    public bool questComplete { get; private set; }
+    public void InitializeQuest()
+    {
+        currentGoal = stepsList[0];
+        questComplete = false;
+    }
+    public void StepIsComplete()
+    {
+        currentGoal.goalComplete = true;
+        
+        int nextInt = stepsList.IndexOf(currentGoal) + 1;
+        if (nextInt >= stepsList.Count)
+            questComplete = true;
+        else
+            currentGoal = stepsList[nextInt];
+
+        Debug.Log("StepIsComplete()");
+    }
+    public void StepIsIncomplete()
+    {
+        int prevInt = stepsList.IndexOf(currentGoal) - 1;
+        if (prevInt < 0)
+            prevInt = 0;
+
+        currentGoal = stepsList[prevInt];
+        currentGoal.goalComplete = false;
+
+        Debug.Log("StepIsIncomplete()");
+    }
 }
