@@ -11,19 +11,26 @@ public class MixingBowl : MonoBehaviour
 
     private QuestGiver QuestGiver;
 
-    public bool recipeComplete = false;
-    public Ingredient _ingredientInBowl;
-    public List<IngredientType> _ingredientOrder;
+    public Ingredient ingredientInBowl;
+    public List<IngredientType> ingredientOrder;
 
-    private Queue<IngredientType> _ingredientQueue;
+    [SerializeField] private List<MeshRenderer> fillMeshes;
+    public int fillLevel = 0;
+    public bool recipeComplete = false;
+
+    private Queue<IngredientType> ingredientQueue;
 
 
     private void Start()
     {
         QuestGiver = FindObjectOfType<QuestGiver>();
-        _ingredientQueue = new Queue<IngredientType>(_ingredientOrder);
+        ingredientQueue = new Queue<IngredientType>(ingredientOrder);
+        foreach (var mesh in fillMeshes)
+        {
+            mesh.gameObject.SetActive(false);
+        }
 
-        Debug.Log(_ingredientQueue.Peek());
+        //Debug.Log(_ingredientQueue.Peek());
     }
 
     public void TryMix()
@@ -84,24 +91,30 @@ public class MixingBowl : MonoBehaviour
         }*/
         #endregion
 
-        IngredientType ingredient = _ingredientQueue.Peek();
+        IngredientType ingredient = ingredientQueue.Peek();
 
         //if ingredienttype is next in queue then add to mix
-        if (_ingredientInBowl.ingredientType == ingredient)
+        if (ingredientInBowl.ingredientType == ingredient)
         {
             //check quest giver if current quest needs this ingredient before mixing
-            if (QuestGiver.CompletePlaceStep(ingredient))
-            {
-                MixThisIngredient(ingredient);
-                _ingredientQueue.Dequeue();
-                Debug.Log("Mixing " + ingredient.ToString());
-            }
+            ingredientInBowl.PutIngredientInBowl();
+
+            //mixing logic
+            MixThisIngredient(ingredient);
+            
         }
 
     }
     private void MixThisIngredient(IngredientType ingredientType)
     {
+        ingredientQueue.Dequeue();
+        Debug.Log("Mixing " + ingredientType.ToString());
 
+        if (fillLevel < fillMeshes.Count)
+        {
+            fillMeshes[fillLevel].gameObject.SetActive(true);
+            fillLevel++;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -109,18 +122,10 @@ public class MixingBowl : MonoBehaviour
         Ingredient ingredient = other.GetComponentInParent<Ingredient>();
         if (ingredient != null)
         {
-            if (ingredient.isEmpty == false)
+            if (ingredientInBowl == null || ingredientInBowl != ingredient)
             {
-                if (_ingredientInBowl == null || _ingredientInBowl != ingredient)
-                {
-                    _ingredientInBowl = ingredient;
-                    TryMix();
-                }
-            }
-            else
-            {
-                if (_ingredientInBowl == ingredient)
-                    _ingredientInBowl = null;
+                ingredientInBowl = ingredient;
+                TryMix();
             }
         }
     }
@@ -129,8 +134,8 @@ public class MixingBowl : MonoBehaviour
         Ingredient ingredient = other.GetComponentInParent<Ingredient>();
         if (ingredient != null)
         {
-            if (_ingredientInBowl == ingredient)
-                _ingredientInBowl = null;
+            if (ingredientInBowl == ingredient)
+                ingredientInBowl = null;
         }
     }
 }

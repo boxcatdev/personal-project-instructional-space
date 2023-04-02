@@ -20,9 +20,6 @@ MonoBehaviour:
     goalType: 0
     goalComplete: 0
   stepsList:
-  - goalName: 
-    goalType: 0
-    goalComplete: 0
   - goalName: Gather Eggs
     goalType: 0
     goalComplete: 0

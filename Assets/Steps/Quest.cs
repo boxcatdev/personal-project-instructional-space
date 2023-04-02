@@ -16,17 +16,33 @@ public class Quest : ScriptableObject
     public QuestGoal currentGoal;
 
     public List<QuestGoal> stepsList;
+    private Queue<QuestGoal> stepsQueue;
+    private QuestGiver QuestGiver;
 
     public bool questComplete { get; private set; }
+
     public void InitializeQuest()
     {
-        currentGoal = stepsList[0];
+        QuestGiver = FindObjectOfType<QuestGiver>();
+        foreach (var step in stepsList)
+            step.goalComplete = false;
+        stepsQueue = new Queue<QuestGoal>(stepsList);
+        currentGoal = stepsQueue.Dequeue();
         questComplete = false;
     }
-    public void StepIsComplete()
+    public void CompleteStep()
+    {
+        Debug.Log(currentGoal.goalName + " complete");
+        currentGoal.goalComplete = true;
+        if (stepsQueue.Count > 0)
+            currentGoal = stepsQueue.Dequeue();
+        else
+            QuestGiver.CompleteQuest();
+    }
+    /*public void StepIsComplete()
     {
         currentGoal.goalComplete = true;
-        
+
         int nextInt = stepsList.IndexOf(currentGoal) + 1;
         if (nextInt >= stepsList.Count)
             questComplete = true;
@@ -45,5 +61,5 @@ public class Quest : ScriptableObject
         currentGoal.goalComplete = false;
 
         Debug.Log("StepIsIncomplete()");
-    }
+    }*/
 }
