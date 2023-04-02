@@ -15,6 +15,8 @@ public class QuestGiver : MonoBehaviour
     public TMP_Text descText;
     public TMP_Text currentStep;
 
+    [SerializeField] Animator _doorOpener;
+
     public int questIndex = 0;
     public int stepIndex;
 
@@ -26,7 +28,7 @@ public class QuestGiver : MonoBehaviour
         }
         currentQuest = quests[questIndex];
         //_currentQuest = quest.Peek();
-        //OpenQuestWindow();
+        OpenQuestWindow();
     }
 
     public void CompleteStep()
@@ -48,6 +50,7 @@ public class QuestGiver : MonoBehaviour
     {
         Debug.LogWarning("Quests Complete!");
         Debug.Log("Open door to ritual room");
+        _doorOpener.SetTrigger("Move");
     }
 
     public void OpenQuestWindow()

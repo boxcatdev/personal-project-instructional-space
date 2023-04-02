@@ -17,10 +17,10 @@ public class RitualSequence : MonoBehaviour
 
     // private List<ParticleSystem> _particles;
 
-    private void Start()
-    {
-        StartRitual(); //debug testing DELETE
-    }
+   // private void Start()
+   // {
+   //     StartRitual(); //debug testing DELETE
+   // }
 
 
     public void StartRitual()
