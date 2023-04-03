@@ -16,7 +16,7 @@ MonoBehaviour:
   description: Find the milk in the refrigerator. Add it to the bowl.
   ingredientType: 6
   currentGoal:
-    goalName: 
+    goalName: Gather Milk
     goalType: 0
     goalComplete: 0
   stepsList:

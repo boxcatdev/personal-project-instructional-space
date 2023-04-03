@@ -16,7 +16,7 @@ MonoBehaviour:
   description: Find the Sugar in the kitchen.
   ingredientType: 4
   currentGoal:
-    goalName: Gather Baking Powder
+    goalName: Gather Sugar
     goalType: 0
     goalComplete: 0
   stepsList:

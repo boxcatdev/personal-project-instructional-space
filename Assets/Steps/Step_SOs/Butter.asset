@@ -16,11 +16,11 @@ MonoBehaviour:
   description: Grab the butter in the fridge.
   ingredientType: 3
   currentGoal:
-    goalName: Place Baking Powder
+    goalName: Gather Butter
     goalType: 1
     goalComplete: 0
   stepsList:
-  - goalName: Gather Butter Powder
+  - goalName: Gather Butter
     goalType: 0
     goalComplete: 0
   - goalName: Place Butter In Bowl
