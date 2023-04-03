@@ -45,7 +45,7 @@ public class QuestGiver : MonoBehaviour
 
     internal void CompleteQuest()
     {
-        Debug.Log("CompleteQuest()");
+        //Debug.Log("CompleteQuest()");
 
         questIndex++;
         if (questIndex >= quests.Count)
@@ -63,7 +63,7 @@ public class QuestGiver : MonoBehaviour
 
     private void AllQuestsComplete()
     {
-        Debug.Log("Quests Complete!");
+        Debug.Log("Recipe Complete!");
         Debug.Log("Open door to ritual room");
 
         OpenQuestWindow();
@@ -95,8 +95,8 @@ public class QuestGiver : MonoBehaviour
                 questWindow.SetActive(true);
 
             titleText.text = "Recipe Complete!";
-            descText.text = "";
-            currentStep.text = "";
+            descText.text = "Place the bowl in the center of the ritual circle.";
+            currentStep.text = "Enter the Ritual Room";
         }
     }
 

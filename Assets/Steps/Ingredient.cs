@@ -36,7 +36,7 @@ public class Ingredient : MonoBehaviour
         {
             if(ingredientType == questGiver.currentQuest.ingredientType)
             {
-                Debug.Log("GrabIngredient()");
+                //Debug.Log("GrabIngredient()");
                 questGiver.currentQuest.CompleteStep();
                 questGiver.OpenQuestWindow();
             }
@@ -49,10 +49,10 @@ public class Ingredient : MonoBehaviour
         {
             if (ingredientType == questGiver.currentQuest.ingredientType)
             {
-                Debug.Log("PutIngredientInBowl()");
+                //Debug.Log("PutIngredientInBowl()");
                 questGiver.currentQuest.CompleteStep();
                 questGiver.OpenQuestWindow();
-
+                
                 Destroy(gameObject);
             }
         }

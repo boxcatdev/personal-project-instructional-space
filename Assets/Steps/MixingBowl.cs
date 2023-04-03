@@ -36,6 +36,7 @@ public class MixingBowl : MonoBehaviour
     {
         if(QuestGiver.allQuestsComplete == true && ingredientInBowl != null)
         {
+            Debug.LogWarning("Clearing Mixing Bowl");
             Destroy(ingredientInBowl.gameObject);
         }
     }
@@ -48,19 +49,13 @@ public class MixingBowl : MonoBehaviour
         {
             //mixing logic
             MixThisIngredient(ingredient);
-
-            //check quest giver if current quest needs this ingredient before mixing
-            //ingredientInBowl.PutIngredientInBowl();
-
-            //ingredientInBowl = null;
-
         }
 
     }
     private void MixThisIngredient(IngredientType ingredientType)
     {
-        ingredientQueue.Dequeue();
         Debug.Log("Mixing " + ingredientType.ToString());
+        ingredientQueue.Dequeue();
 
         if (fillLevel < fillMeshes.Count)
         {
@@ -70,9 +65,6 @@ public class MixingBowl : MonoBehaviour
 
         //check quest giver if current quest needs this ingredient before mixing
         ingredientInBowl.PutIngredientInBowl();
-
-        /*if(ingredientInBowl != null)
-            Destroy(ingredientInBowl.gameObject);*/
     }
 
     private void OnTriggerEnter(Collider other)
