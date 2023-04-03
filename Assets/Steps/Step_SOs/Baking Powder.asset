@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9067281d54f565846ac670da7b465128, type: 3}
-  m_Name: Flour
+  m_Name: Baking Powder
   m_EditorClassIdentifier: 
-  questTitle: Flour Power!
-  description: Find the flour in the pantry.
-  ingredientType: 0
+  questTitle: Baking Power!
+  description: Find the baking powder in the pantry.
+  ingredientType: 1
   currentGoal:
-    goalName: Place Flour
-    goalType: 1
-    goalComplete: 1
-  stepsList:
-  - goalName: Gather Flour
+    goalName: Gather Baking Powder
     goalType: 0
-    goalComplete: 1
-  - goalName: Place Flour
+    goalComplete: 0
+  stepsList:
+  - goalName: Gather Baking Powder
+    goalType: 0
+    goalComplete: 0
+  - goalName: Place Baking Powder In Bowl
     goalType: 1
-    goalComplete: 1
+    goalComplete: 0

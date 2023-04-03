@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class QuestGiver : MonoBehaviour
 {
     public List<Quest> quests;
     public Quest currentQuest;
     public Player player;
+    public MixingBowl _mixingBowl;
 
     public GameObject questWindow;
     public TMP_Text titleText;
@@ -51,6 +53,9 @@ public class QuestGiver : MonoBehaviour
         Debug.LogWarning("Quests Complete!");
         Debug.Log("Open door to ritual room");
         _doorOpener.SetTrigger("Move");
+        _mixingBowl.GetComponent<XRGrabInteractable>().enabled = true;
+        _mixingBowl.GetComponent<Rigidbody>().isKinematic = false;
+
     }
 
     public void OpenQuestWindow()

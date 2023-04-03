@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9067281d54f565846ac670da7b465128, type: 3}
-  m_Name: Baking Powder
+  m_Name: Eggs
   m_EditorClassIdentifier: 
-  questTitle: Baking Powder
-  description: Find the baking powder in the pantry.
-  ingredientType: 1
+  questTitle: Egg-cellent Quest
+  description: Find the right eggs in the refrigerator.
+  ingredientType: 5
   currentGoal:
-    goalName: Place Baking Powder
-    goalType: 1
-    goalComplete: 0
-  stepsList:
-  - goalName: Gather Baking Powder
+    goalName: Gather Eggs
     goalType: 0
     goalComplete: 0
-  - goalName: Place Baking Powder
+  stepsList:
+  - goalName: Gather Eggs
+    goalType: 0
+    goalComplete: 0
+  - goalName: Place Eggs in Bowl
     goalType: 1
-    goalComplete: 1
+    goalComplete: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum IngredientType { Flour, Baking_Powder, Salt, Butter, Sugar, Eggs, Milk }
+public enum IngredientType { Flour, Baking_Powder, Salt, Butter, Sugar, Eggs, Milk, Bowl }
 
 public class Ingredient : MonoBehaviour
 {

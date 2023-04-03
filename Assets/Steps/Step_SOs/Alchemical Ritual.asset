@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9067281d54f565846ac670da7b465128, type: 3}
-  m_Name: Eggs
+  m_Name: Alchemical Ritual
   m_EditorClassIdentifier: 
-  questTitle: Grab Eggs
-  description: Find the right eggs in the refrigerator.
-  ingredientType: 5
+  questTitle: The Ritual.
+  description: Put the Bowl in the Ritual Room.
+  ingredientType: 4
   currentGoal:
-    goalName: 
+    goalName: Grab the Bowl.
     goalType: 0
     goalComplete: 0
   stepsList:
-  - goalName: Gather Eggs
+  - goalName: Grab the Bowl.
     goalType: 0
     goalComplete: 0
-  - goalName: Place Eggs
+  - goalName: Place the Bowl in the Ritual Circle.
     goalType: 1
     goalComplete: 0
