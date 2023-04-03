@@ -32,76 +32,28 @@ public class MixingBowl : MonoBehaviour
 
         //Debug.Log(_ingredientQueue.Peek());
     }
-
+    private void Update()
+    {
+        if(QuestGiver.allQuestsComplete == true && ingredientInBowl != null)
+        {
+            Destroy(ingredientInBowl.gameObject);
+        }
+    }
     public void TryMix()
     {
-        #region Old Mixer Code
-
-        ///check all recipes
-        ///if ingredients apply to any recipe
-        ///instantiate drink from recipe
-        ///empty ingredients after making drink
-
-        /*DrinkRecipeSO drink = null;
-        List<Ingredient> usedIngredients = new List<Ingredient>();
-
-        //iterate through each recipe
-        foreach (DrinkRecipeSO recipe in _recipes)
-        {
-            List<Ingredient.IngredientType> ingredientsFromRecipe = new List<Ingredient.IngredientType>(recipe.listOfIngredients);
-
-            foreach (Ingredient ingredient in _ingredientsInMixer)
-            {
-                if (ingredientsFromRecipe.Contains(ingredient._type))
-                {
-                    ingredientsFromRecipe.Remove(ingredient._type);
-                }
-            }
-
-            if (ingredientsFromRecipe.Count == 0)
-            {
-                drink = recipe;
-            }
-        }*/
-
-        /*//spawn drink if ingredients exist
-        if (_ingredientQueue != null || _ingredientQueue.Count > 0)
-        {
-            Debug.Log("Make drink: " + drink.recipeName);
-            Transform newDrink = Instantiate(drink.outputDrinkPrefab.transform, transform);
-            newDrink.position = _spawnDrinkPosition.position;
-
-            //one more loop to empty ingredients used in drink
-            List<Ingredient.IngredientType> ingredientsFromRecipe = new List<Ingredient.IngredientType>(drink.listOfIngredients);
-            foreach (Ingredient ingredient in _ingredientsInBowl)
-            {
-                if (ingredientsFromRecipe.Contains(ingredient._type))
-                {
-                    ingredientsFromRecipe.Remove(ingredient._type);
-                    usedIngredients.Add(ingredient);
-                }
-
-                if (ingredientsFromRecipe.Count == 0) break;
-            }
-
-            foreach (Ingredient i in usedIngredients)
-            {
-                i.EmptyIngredient();
-            }
-        }*/
-        #endregion
-
         IngredientType ingredient = ingredientQueue.Peek();
 
         //if ingredienttype is next in queue then add to mix
         if (ingredientInBowl.ingredientType == ingredient)
         {
-            //check quest giver if current quest needs this ingredient before mixing
-            ingredientInBowl.PutIngredientInBowl();
-
             //mixing logic
             MixThisIngredient(ingredient);
-            
+
+            //check quest giver if current quest needs this ingredient before mixing
+            //ingredientInBowl.PutIngredientInBowl();
+
+            //ingredientInBowl = null;
+
         }
 
     }
@@ -115,6 +67,12 @@ public class MixingBowl : MonoBehaviour
             fillMeshes[fillLevel].gameObject.SetActive(true);
             fillLevel++;
         }
+
+        //check quest giver if current quest needs this ingredient before mixing
+        ingredientInBowl.PutIngredientInBowl();
+
+        /*if(ingredientInBowl != null)
+            Destroy(ingredientInBowl.gameObject);*/
     }
 
     private void OnTriggerEnter(Collider other)

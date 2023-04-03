@@ -22,8 +22,12 @@ public class QuestGiver : MonoBehaviour
     public int questIndex = 0;
     public int stepIndex;
 
+    public bool allQuestsComplete {get; private set;}
+
     private void Awake()
     {
+        allQuestsComplete = false;
+
         foreach (var quest in quests)
         {
             quest.InitializeQuest();
@@ -33,26 +37,41 @@ public class QuestGiver : MonoBehaviour
         OpenQuestWindow();
     }
 
-    public void CompleteStep()
+    /*public void CompleteStep()
     {
         currentQuest.CompleteStep();
-    }
+        OpenQuestWindow();
+    }*/
 
     internal void CompleteQuest()
     {
+        Debug.Log("CompleteQuest()");
+
         questIndex++;
         if (questIndex >= quests.Count)
+        {
+            allQuestsComplete = true;
+
             AllQuestsComplete();
+        }
         else
+        {
             currentQuest = quests[questIndex];
-        Debug.Log("New Quest: " + currentQuest.questTitle);
+            Debug.Log("New Quest: " + currentQuest.questTitle);
+        }
     }
 
     private void AllQuestsComplete()
     {
-        Debug.LogWarning("Quests Complete!");
+        Debug.Log("Quests Complete!");
         Debug.Log("Open door to ritual room");
-        _doorOpener.SetTrigger("Move");
+
+        OpenQuestWindow();
+
+        if (_doorOpener != null)
+            _doorOpener.SetTrigger("Move");
+        else
+            Debug.LogWarning("No '_doorOpener'");
         _mixingBowl.GetComponent<XRGrabInteractable>().enabled = true;
         _mixingBowl.GetComponent<Rigidbody>().isKinematic = false;
 
@@ -60,11 +79,25 @@ public class QuestGiver : MonoBehaviour
 
     public void OpenQuestWindow()
     {
-        questWindow.SetActive(true);
-        titleText.text = currentQuest.questTitle;
-        descText.text = currentQuest.description;
-        currentStep.text = currentQuest.currentGoal.goalName;
-        //currentStep.text = _currentQuest.steps[stepIndex].goalName;
+        if(allQuestsComplete == false)
+        {
+            if (!questWindow.activeInHierarchy)
+                questWindow.SetActive(true);
+
+            titleText.text = currentQuest.questTitle;
+            descText.text = currentQuest.description;
+            currentStep.text = currentQuest.currentGoal.goalName;
+            //currentStep.text = _currentQuest.steps[stepIndex].goalName;
+        }
+        else
+        {
+            if (!questWindow.activeInHierarchy)
+                questWindow.SetActive(true);
+
+            titleText.text = "Recipe Complete!";
+            descText.text = "";
+            currentStep.text = "";
+        }
     }
 
 }

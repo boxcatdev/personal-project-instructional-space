@@ -26,7 +26,8 @@ public class Ingredient : MonoBehaviour
     }
     private void Update()
     {
-        CheckIconStatus();
+        if(icon != null)
+            CheckIconStatus();
     }
     public void GrabIngredient()
     {
@@ -36,7 +37,8 @@ public class Ingredient : MonoBehaviour
             if(ingredientType == questGiver.currentQuest.ingredientType)
             {
                 Debug.Log("GrabIngredient()");
-                questGiver.CompleteStep();
+                questGiver.currentQuest.CompleteStep();
+                questGiver.OpenQuestWindow();
             }
         }
     }
@@ -48,7 +50,10 @@ public class Ingredient : MonoBehaviour
             if (ingredientType == questGiver.currentQuest.ingredientType)
             {
                 Debug.Log("PutIngredientInBowl()");
-                questGiver.CompleteStep();
+                questGiver.currentQuest.CompleteStep();
+                questGiver.OpenQuestWindow();
+
+                Destroy(gameObject);
             }
         }
         CheckIconStatus();
