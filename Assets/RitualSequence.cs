@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class RitualSequence : MonoBehaviour
 {
+    private MixingBowl mixingBowl;
     [SerializeField] List<Transform> _instantiateTransforms;
     [SerializeField] GameObject _fireParent;
     [SerializeField] GameObject _fireSwirl;
@@ -19,10 +20,14 @@ public class RitualSequence : MonoBehaviour
     // private List<ParticleSystem> _particles;
 
     // private void Start()
-   // {
-   //     StartRitual(); //debug testing DELETE
-   // }
+    // {
+    //     StartRitual(); //debug testing DELETE
+    // }
 
+    private void Start()
+    {
+        mixingBowl = FindObjectOfType<MixingBowl>();
+    }
 
     public void StartRitual()
     {
@@ -54,6 +59,7 @@ public class RitualSequence : MonoBehaviour
         _light.enabled = true;
 
         yield return new WaitForSeconds(3f);
+        mixingBowl.gameObject.SetActive(false);
         _cake = Instantiate(_finalCake, _finalCakeSpawn, false);
         _cake.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
         _growCake = true;
