@@ -78,16 +78,20 @@ public class Ingredient : MonoBehaviour
     }
     public void ToggleIcon(bool active)
     {
-        if(active == true)
+        if(icon != null)
         {
-            if (icon.gameObject.activeInHierarchy == false)
-                icon.gameObject.SetActive(true);
+            if (active == true)
+            {
+                if (icon.gameObject.activeInHierarchy == false)
+                    icon.gameObject.SetActive(true);
+            }
+            else
+            {
+                if (icon.gameObject.activeInHierarchy == true)
+                    icon.gameObject.SetActive(false);
+            }
         }
-        else
-        {
-            if (icon.gameObject.activeInHierarchy == true)
-                icon.gameObject.SetActive(false);
-        }
+        
     }
     public void IsHover(bool isBool)
     {
