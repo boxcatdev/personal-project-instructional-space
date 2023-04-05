@@ -18,6 +18,7 @@ public class QuestGiver : MonoBehaviour
     public TMP_Text currentStep;
 
     [SerializeField] Animator _doorOpener;
+    [SerializeField] AudioSource _musicSource;
 
     public int questIndex = 0;
     public int stepIndex;
@@ -48,7 +49,7 @@ public class QuestGiver : MonoBehaviour
         //Debug.Log("CompleteQuest()");
 
         questIndex++;
-        if (questIndex >= quests.Count)
+        if (questIndex >= quests.Count - 1)
         {
             allQuestsComplete = true;
 
@@ -67,6 +68,8 @@ public class QuestGiver : MonoBehaviour
         Debug.Log("Open door to ritual room");
 
         OpenQuestWindow();
+
+        _musicSource.pitch -= 5;
 
         if (_doorOpener != null)
             _doorOpener.SetTrigger("Move");

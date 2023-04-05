@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RitualSequence : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class RitualSequence : MonoBehaviour
 
     // private List<ParticleSystem> _particles;
 
-   // private void Start()
+    // private void Start()
    // {
    //     StartRitual(); //debug testing DELETE
    // }
@@ -60,6 +61,9 @@ public class RitualSequence : MonoBehaviour
         yield return new WaitForSeconds(3f);
         _light.enabled = false;
         _growCake = false;
+
+        yield return new WaitForSeconds(20f);
+        SceneManager.LoadScene("EndScene");
 
     }
 

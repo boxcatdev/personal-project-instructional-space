@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/MainMenu.unity
+    guid: d5e0aae570e73f44994401d297bf70f8
+  - enabled: 1
+    path: Assets/Scenes/PhilosophersKitchen.unity
+    guid: 582db5399576dcb48874c860201c0588
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: a0360df69e14f2244a963adb561d47be
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ff4a078fbafd3a040a9670f6b417cf47,
       type: 2}
